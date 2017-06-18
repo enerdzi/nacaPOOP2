@@ -56,7 +56,7 @@ public class MyMenuBar extends JMenuBar {
         infoMenuItem.setMnemonic(KeyEvent.VK_I);
         infoMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, KeyEvent.CTRL_MASK));
         infoMenuItem.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Natalija Radic");
+            JOptionPane.showMessageDialog(this.getParent(), "Natalija Radic");
         });
         help.add(infoMenuItem);
 

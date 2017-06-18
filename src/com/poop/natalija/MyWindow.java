@@ -15,9 +15,9 @@ public class MyWindow extends JFrame{
         ImageIcon icon = new ImageIcon("img/poop.png");
 
         setJMenuBar(new MyMenuBar());
-        add(new MyToolBar(), BorderLayout.NORTH);
-
-        add(new MyCanvas(), BorderLayout.CENTER);
+        MyCanvas canvas = new MyCanvas();
+        add(new MyToolBar(canvas), BorderLayout.NORTH);
+        add(canvas, BorderLayout.CENTER);
 
         setIconImage(icon.getImage());
         setTitle("PooPaint");

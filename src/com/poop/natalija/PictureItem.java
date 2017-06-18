@@ -7,7 +7,7 @@ public abstract class PictureItem {
     private Color color;
     private int thickness;
 
-    public abstract void draw(Graphics g);
+    public abstract void draw(Graphics2D g);
 
     public Color getColor() {
         return color;

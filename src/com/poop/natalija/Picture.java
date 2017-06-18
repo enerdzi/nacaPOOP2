@@ -12,7 +12,11 @@ public class Picture {
         items = new ArrayList<PictureItem>();
     }
 
-    public void repaintPicture(Graphics g) {
+    public void repaintPicture(Graphics2D g) {
         items.forEach(pictureItem -> pictureItem.draw(g));
+    }
+
+    public void addItem(PictureItem item) {
+        items.add(item);
     }
 }
