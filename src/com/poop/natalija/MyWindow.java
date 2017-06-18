@@ -4,9 +4,9 @@ package com.poop.natalija;
 import javax.swing.*;
 import java.awt.*;
 
-public class AppWindow extends JFrame{
+public class MyWindow extends JFrame{
 
-    public AppWindow() {
+    public MyWindow() {
         initWindow();
     }
 
@@ -15,6 +15,9 @@ public class AppWindow extends JFrame{
         ImageIcon icon = new ImageIcon("img/poop.png");
 
         setJMenuBar(new MyMenuBar());
+        add(new MyToolBar(), BorderLayout.NORTH);
+
+        add(new MyCanvas(), BorderLayout.CENTER);
 
         setIconImage(icon.getImage());
         setTitle("PooPaint");
@@ -25,7 +28,7 @@ public class AppWindow extends JFrame{
 
     public static void main(String args[]){
         EventQueue.invokeLater(() -> {
-            AppWindow aw = new AppWindow();
+            MyWindow aw = new MyWindow();
             aw.setVisible(true);
         });
     }
