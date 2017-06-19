@@ -8,7 +8,9 @@ public class MyBoundingBox {
     private Point topLeft;
     private int width, height;
     private static final Color boundingBoxColor = Color.lightGray;
+    private static final Color selectedBoundingBoxColor = Color.darkGray;
     private static final int boundingBoxThickness = 1;
+    private static final int selectedBoundingBoxThickness = boundingBoxThickness + 1;
 
     public MyBoundingBox(Point topLeft, int width, int height) {
         this.topLeft = new Point(topLeft.x - padding, topLeft.y - padding);
@@ -22,6 +24,18 @@ public class MyBoundingBox {
             g.setStroke(new BasicStroke(boundingBoxThickness));
             g.drawRect(topLeft.x, topLeft.y, width, height);
         }
+    }
+
+    public void drawSelected(Graphics2D g){
+        if (MyCanvas.drawBoundingBox) {
+            g.setColor(selectedBoundingBoxColor);
+            g.setStroke(new BasicStroke(selectedBoundingBoxThickness));
+            g.drawRect(topLeft.x, topLeft.y, width, height);
+        }
+    }
+
+    public boolean isInBoundingBox(Point point) {
+        return !(point.x < topLeft.x || point.x > topLeft.x + width || point.y < topLeft.y || point.y > topLeft.y + height);
     }
 
     public Point getTopLeft() {

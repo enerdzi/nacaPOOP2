@@ -22,6 +22,13 @@ public class Line extends PictureItem{
     }
 
     @Override
+    public void drawSelectedItem(Graphics2D g) {
+        g.setColor(getColor());
+        g.setStroke(new BasicStroke(getThickness() + 2));
+        g.drawLine(start.x, start.y, end.x, end.y);
+    }
+
+    @Override
     protected void makeBoundingBox() {
         Point topLeft = new Point((int) Math.min(start.getX(), end.getX()), (int) Math.min(start.getY(), end.getY()));
         int width = (int) Math.abs(start.getX() - end.getX());

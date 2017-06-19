@@ -13,7 +13,13 @@ public abstract class PictureItem {
         boundingBox.draw(g);
     }
 
+    public void drawSelected(Graphics2D g) {
+        drawSelectedItem(g);
+        boundingBox.drawSelected(g);
+    }
+
     public abstract void drawItem(Graphics2D g);
+    public abstract void drawSelectedItem(Graphics2D g);
     protected abstract void makeBoundingBox();
 
     public Color getColor() {
@@ -34,5 +40,9 @@ public abstract class PictureItem {
 
     public void setBoundingBox(MyBoundingBox boundingBox) {
         this.boundingBox = boundingBox;
+    }
+
+    public boolean isClicked(Point p) {
+        return boundingBox.isInBoundingBox(p);
     }
 }

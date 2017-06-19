@@ -14,9 +14,14 @@ public class MyToolBar extends JToolBar{
     }
 
     private void createToolBar() {
-        JButton b = new JButton("Line");
-        this.add(b);
-        b.addActionListener(e -> {
+        JButton selectBtn = new JButton("Select");
+        this.add(selectBtn);
+        selectBtn.addActionListener(e -> {
+            canvas.setSelectListener();
+        });
+        JButton lineBtn = new JButton("Line");
+        this.add(lineBtn);
+        lineBtn.addActionListener(e -> {
             canvas.setLineListener();
         });
     }

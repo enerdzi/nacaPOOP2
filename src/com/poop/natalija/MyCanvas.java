@@ -15,15 +15,20 @@ public class MyCanvas extends JPanel{
     private int thickness;
 
     private PictureItem drawingItem;
+    private PictureItem selectedItem;
 
     private LineListener lineListener;
+    private SelectListener selectListener;
 
     public MyCanvas() {
         picture = new Picture();
         color = Color.BLACK;
         thickness = 1;
-        drawingItem = null;
+
+        drawingItem = selectedItem = null;
+
         lineListener = new LineListener(this);
+        selectListener = new SelectListener(this);
     }
 
     @Override
@@ -33,6 +38,7 @@ public class MyCanvas extends JPanel{
         g.fillRect(0,0, this.getWidth(), this.getHeight());
         picture.repaintPicture(g);
         if (drawingItem != null) drawingItem.draw(g);
+        if (selectedItem != null) selectedItem.drawSelected(g);
     }
 
     public Picture getPicture() {
@@ -67,14 +73,28 @@ public class MyCanvas extends JPanel{
         this.drawingItem = drawingItem;
     }
 
+    public PictureItem getSelectedItem() {
+        return selectedItem;
+    }
+
+    public void setSelectedItem(PictureItem selectedItem) {
+        this.selectedItem = selectedItem;
+    }
+
     private void removeListeners() {
         this.removeMouseListener(lineListener);
         this.removeMouseMotionListener(lineListener);
+        this.removeMouseListener(selectListener);
     }
 
     public void setLineListener() {
         removeListeners();
         this.addMouseListener(lineListener);
         this.addMouseMotionListener(lineListener);
+    }
+
+    public void setSelectListener() {
+        removeListeners();
+        this.addMouseListener(selectListener);
     }
 }
