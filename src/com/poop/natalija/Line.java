@@ -11,6 +11,7 @@ public class Line extends PictureItem{
         setThickness(thickness);
         this.start = start;
         this.end = end;
+        setSelected(false);
         makeBoundingBox();
     }
 

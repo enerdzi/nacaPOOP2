@@ -38,7 +38,6 @@ public class MyCanvas extends JPanel{
         g.fillRect(0,0, this.getWidth(), this.getHeight());
         picture.repaintPicture(g);
         if (drawingItem != null) drawingItem.draw(g);
-        if (selectedItem != null) selectedItem.drawSelected(g);
     }
 
     public Picture getPicture() {

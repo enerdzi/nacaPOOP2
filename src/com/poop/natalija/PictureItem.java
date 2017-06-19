@@ -7,13 +7,17 @@ public abstract class PictureItem {
     private Color color;
     private int thickness;
     private MyBoundingBox boundingBox;
+    private boolean isSelected;
 
     public void draw(Graphics2D g) {
-        drawItem(g);
-        boundingBox.draw(g);
+        if (isSelected) drawSelected(g);
+        else {
+            drawItem(g);
+            boundingBox.draw(g);
+        }
     }
 
-    public void drawSelected(Graphics2D g) {
+    private void drawSelected(Graphics2D g) {
         drawSelectedItem(g);
         boundingBox.drawSelected(g);
     }
@@ -40,6 +44,14 @@ public abstract class PictureItem {
 
     public void setBoundingBox(MyBoundingBox boundingBox) {
         this.boundingBox = boundingBox;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
     public boolean isClicked(Point p) {

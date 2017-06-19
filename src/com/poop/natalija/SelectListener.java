@@ -26,7 +26,9 @@ public class SelectListener implements MouseListener{
                 selected = clickedItems.get(index);
             }
         }
+        if (canvas.getSelectedItem() != null) canvas.getSelectedItem().setSelected(false);
         canvas.setSelectedItem(selected);
+        if (canvas.getSelectedItem() != null) canvas.getSelectedItem().setSelected(true);
         canvas.repaint();
     }
 
