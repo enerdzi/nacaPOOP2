@@ -84,6 +84,7 @@ public class MyCanvas extends JPanel{
         this.removeMouseListener(lineListener);
         this.removeMouseMotionListener(lineListener);
         this.removeMouseListener(selectListener);
+        this.removeMouseMotionListener(selectListener);
     }
 
     public void setLineListener() {
@@ -96,10 +97,12 @@ public class MyCanvas extends JPanel{
     public void setSelectListener() {
         removeListeners();
         this.addMouseListener(selectListener);
+        this.addMouseMotionListener(selectListener);
     }
 
     private void unSelect() {
         if (this.getSelectedItem() != null) this.getSelectedItem().setSelected(false);
         this.setSelectedItem(null);
+        this.repaint();
     }
 }

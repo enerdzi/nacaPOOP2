@@ -22,9 +22,21 @@ public abstract class PictureItem {
         boundingBox.drawSelected(g);
     }
 
+    public void move(int x, int y) {
+        moveItem(x, y);
+        moveBoundingBox(x, y);
+    }
+
     public abstract void drawItem(Graphics2D g);
     public abstract void drawSelectedItem(Graphics2D g);
     protected abstract void makeBoundingBox();
+    protected abstract void moveItem(int x, int y);
+
+    private void moveBoundingBox(int x, int y) {
+        Point topLeft = boundingBox.getTopLeft();
+        Point newTopLeft = new Point(topLeft.x + x, topLeft.y + y);
+        boundingBox.setTopLeft(newTopLeft);
+    }
 
     public Color getColor() {
         return color;

@@ -38,6 +38,12 @@ public class Line extends PictureItem{
         setBoundingBox(bb);
     }
 
+    @Override
+    protected void moveItem(int x, int y) {
+        start = new Point(start.x + x, start.y + y);
+        end = new Point(end.x + x, end.y + y);
+    }
+
     public Point getStart() {
         return start;
     }
