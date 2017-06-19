@@ -24,6 +24,12 @@ public class MyToolBar extends JToolBar{
         deleteBtn.addActionListener(e -> {
             canvas.setDeleteListener();
         });
+        JCheckBox showBoxCheck = new JCheckBox("Show box", true);
+        this.add(showBoxCheck);
+        showBoxCheck.addItemListener(e -> {
+           MyCanvas.drawBoundingBox = (e.getStateChange()==1?true:false);
+           canvas.repaint();
+        });
         JButton lineBtn = new JButton("Line");
         this.add(lineBtn);
         lineBtn.addActionListener(e -> {
