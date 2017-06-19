@@ -11,13 +11,23 @@ public class Line extends PictureItem{
         setThickness(thickness);
         this.start = start;
         this.end = end;
+        makeBoundingBox();
     }
 
     @Override
-    public void draw(Graphics2D g) {
+    public void drawItem(Graphics2D g) {
         g.setColor(getColor());
         g.setStroke(new BasicStroke(getThickness()));
         g.drawLine(start.x, start.y, end.x, end.y);
+    }
+
+    @Override
+    protected void makeBoundingBox() {
+        Point topLeft = new Point((int) Math.min(start.getX(), end.getX()), (int) Math.min(start.getY(), end.getY()));
+        int width = (int) Math.abs(start.getX() - end.getX());
+        int height = (int) Math.abs(start.getY() - end.getY());
+        MyBoundingBox bb = new MyBoundingBox(topLeft, width, height);
+        setBoundingBox(bb);
     }
 
     public Point getStart() {
