@@ -45,8 +45,12 @@ public class DeleteListener implements MouseListener {
     public void mouseReleased(MouseEvent e) {}
 
     @Override
-    public void mouseEntered(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {
+        canvas.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }
 
     @Override
-    public void mouseExited(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {
+        canvas.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }
 }

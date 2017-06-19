@@ -31,6 +31,8 @@ public class MyCanvas extends JPanel{
         lineListener = new LineListener(this);
         selectListener = new SelectListener(this);
         deleteListener = new DeleteListener(this);
+
+        this.setSelectListener();
     }
 
     @Override
@@ -93,18 +95,21 @@ public class MyCanvas extends JPanel{
     public void setLineListener() {
         removeListeners();
         unSelect();
+        this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         this.addMouseListener(lineListener);
         this.addMouseMotionListener(lineListener);
     }
 
     public void setSelectListener() {
         removeListeners();
+        this.setCursor(new Cursor(Cursor.HAND_CURSOR));
         this.addMouseListener(selectListener);
         this.addMouseMotionListener(selectListener);
     }
 
     public void setDeleteListener() {
         removeListeners();
+        this.setCursor(new Cursor(Cursor.HAND_CURSOR));
         this.addMouseListener(deleteListener);
     }
 
