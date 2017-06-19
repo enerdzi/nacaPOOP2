@@ -34,7 +34,6 @@ public class SelectListener implements MouseListener, MouseMotionListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
-        canvas.setCursor(new Cursor(Cursor.HAND_CURSOR));
         Point point = new Point(e.getX(), e.getY());
         clickPoint = lastPoint = point;
         PictureItem selected = null;
@@ -50,6 +49,7 @@ public class SelectListener implements MouseListener, MouseMotionListener{
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        canvas.setCursor(new Cursor(Cursor.HAND_CURSOR));
         if (selectedClicked && !dragged) {
             int index = (clickedItems.indexOf(canvas.getSelectedItem()) + 1) % clickedItems.size();
             PictureItem selected = clickedItems.get(index);

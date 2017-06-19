@@ -23,7 +23,7 @@ public class MyCanvas extends JPanel{
 
     public MyCanvas() {
         picture = new Picture();
-        color = Color.BLACK;
+        color = new Color(44, 62, 80);
         thickness = 1;
 
         drawingItem = selectedItem = null;
@@ -58,6 +58,10 @@ public class MyCanvas extends JPanel{
 
     public void setColor(Color color) {
         this.color = color;
+        if (selectedItem != null) {
+            selectedItem.setColor(this.color);
+            this.repaint();
+        }
     }
 
     public int getThickness() {
@@ -66,6 +70,10 @@ public class MyCanvas extends JPanel{
 
     public void setThickness(int thickness) {
         this.thickness = thickness;
+        if (selectedItem != null) {
+            selectedItem.setThickness(this.thickness);
+            this.repaint();
+        }
     }
 
     public PictureItem getDrawingItem() {
