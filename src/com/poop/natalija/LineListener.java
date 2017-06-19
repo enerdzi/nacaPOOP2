@@ -31,6 +31,7 @@ public class LineListener implements MouseListener, MouseMotionListener{
         line = new Line(line.getStart(), point, canvas.getColor(), canvas.getThickness());
         canvas.setDrawingItem(null);
         canvas.getPicture().addItem(line);
+        MyAction.newAction(new NewItemAction(canvas, line));
         canvas.repaint();
     }
 

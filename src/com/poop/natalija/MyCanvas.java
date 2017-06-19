@@ -59,6 +59,7 @@ public class MyCanvas extends JPanel{
     public void setColor(Color color) {
         this.color = color;
         if (selectedItem != null) {
+            MyAction.newAction(new ColorChangeAction(this));
             selectedItem.setColor(this.color);
             this.repaint();
         }
@@ -71,6 +72,7 @@ public class MyCanvas extends JPanel{
     public void setThickness(int thickness) {
         this.thickness = thickness;
         if (selectedItem != null) {
+            MyAction.newAction(new ThicknessChangeAction(this));
             selectedItem.setThickness(this.thickness);
             this.repaint();
         }
@@ -119,6 +121,14 @@ public class MyCanvas extends JPanel{
         removeListeners();
         this.setCursor(new Cursor(Cursor.HAND_CURSOR));
         this.addMouseListener(deleteListener);
+    }
+
+    public void undo() {
+        if (MyAction.undo()) unSelect();
+    }
+
+    public void redo() {
+        if (MyAction.redo()) unSelect();
     }
 
     private void unSelect() {

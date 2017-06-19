@@ -105,5 +105,16 @@ public class MyToolBar extends JToolBar{
             int value = Integer.parseInt(label);
             canvas.setThickness(value);
         });
+        this.addSeparator();
+        JButton undoBtn = new JButton("Undo");
+        this.add(undoBtn);
+        undoBtn.addActionListener(e -> {
+            canvas.undo();
+        });
+        JButton redoBtn = new JButton("Redo");
+        this.add(redoBtn);
+        redoBtn.addActionListener(e -> {
+            canvas.redo();
+        });
     }
 }

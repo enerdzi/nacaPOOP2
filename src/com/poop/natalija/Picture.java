@@ -33,4 +33,12 @@ public class Picture {
         Collections.reverse(filteredItems);
         return filteredItems;
     }
+
+    public int getItemIndex(PictureItem item) {
+        return items.indexOf(item);
+    }
+
+    public void insertItem(PictureItem item, int index) {
+        items.add(index, item);
+    }
 }

@@ -55,6 +55,7 @@ public class SelectListener implements MouseListener, MouseMotionListener{
             PictureItem selected = clickedItems.get(index);
             selectAndRepaint(selected);
         }
+        if (dragged) MyAction.newAction(new MoveAction(canvas, clickPoint, lastPoint));
         dragged = selectedClicked = false;
     }
 

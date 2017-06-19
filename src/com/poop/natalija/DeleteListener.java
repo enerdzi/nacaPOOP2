@@ -20,8 +20,12 @@ public class DeleteListener implements MouseListener {
 
     private void deleteAndRepaint(PictureItem selected) {
         if (canvas.getSelectedItem() != null) canvas.getSelectedItem().setSelected(false);
+        canvas.setSelectedItem(selected);
+        if (selected != null) {
+            MyAction.newAction(new DeleteAction(canvas));
+            canvas.getPicture().removeItem(selected);
+        }
         canvas.setSelectedItem(null);
-        if (selected != null) canvas.getPicture().removeItem(selected);
         canvas.repaint();
     }
 
