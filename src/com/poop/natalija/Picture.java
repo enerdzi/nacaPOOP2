@@ -20,6 +20,11 @@ public class Picture {
     public void addItem(PictureItem item) {
         items.add(item);
     }
+
+    public void removeItem(PictureItem item) {
+        items.remove(item);
+    }
+
     public List<PictureItem> getItemsByPoint(Point point) {
         List<PictureItem> filteredItems = items
                 .stream()

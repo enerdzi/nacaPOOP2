@@ -19,6 +19,7 @@ public class MyCanvas extends JPanel{
 
     private LineListener lineListener;
     private SelectListener selectListener;
+    private DeleteListener deleteListener;
 
     public MyCanvas() {
         picture = new Picture();
@@ -29,6 +30,7 @@ public class MyCanvas extends JPanel{
 
         lineListener = new LineListener(this);
         selectListener = new SelectListener(this);
+        deleteListener = new DeleteListener(this);
     }
 
     @Override
@@ -85,6 +87,7 @@ public class MyCanvas extends JPanel{
         this.removeMouseMotionListener(lineListener);
         this.removeMouseListener(selectListener);
         this.removeMouseMotionListener(selectListener);
+        this.removeMouseListener(deleteListener);
     }
 
     public void setLineListener() {
@@ -98,6 +101,11 @@ public class MyCanvas extends JPanel{
         removeListeners();
         this.addMouseListener(selectListener);
         this.addMouseMotionListener(selectListener);
+    }
+
+    public void setDeleteListener() {
+        removeListeners();
+        this.addMouseListener(deleteListener);
     }
 
     private void unSelect() {

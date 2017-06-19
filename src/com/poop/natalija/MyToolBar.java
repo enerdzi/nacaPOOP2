@@ -19,6 +19,11 @@ public class MyToolBar extends JToolBar{
         selectBtn.addActionListener(e -> {
             canvas.setSelectListener();
         });
+        JButton deleteBtn = new JButton("Delete");
+        this.add(deleteBtn);
+        deleteBtn.addActionListener(e -> {
+            canvas.setDeleteListener();
+        });
         JButton lineBtn = new JButton("Line");
         this.add(lineBtn);
         lineBtn.addActionListener(e -> {
