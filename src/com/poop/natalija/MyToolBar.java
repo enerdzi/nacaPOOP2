@@ -39,13 +39,13 @@ public class MyToolBar extends JToolBar{
     }
 
     private void createToolBar() {
-        JButton selectBtn = new JButton("Select");
+        JButton selectBtn = new JButton(new ImageIcon("img/select.png"));
         this.add(selectBtn);
         selectBtn.addActionListener(e -> {
             canvas.setSelectListener();
             canvas.setSelectedTool("Select");
         });
-        JButton deleteBtn = new JButton("Delete");
+        JButton deleteBtn = new JButton(new ImageIcon("img/delete.png"));
         this.add(deleteBtn);
         deleteBtn.addActionListener(e -> {
             canvas.setDeleteListener();
@@ -58,25 +58,25 @@ public class MyToolBar extends JToolBar{
            canvas.repaint();
         });
         this.addSeparator();
-        JButton lineBtn = new JButton("Line");
+        JButton lineBtn = new JButton(new ImageIcon("img/line.png"));
         this.add(lineBtn);
         lineBtn.addActionListener(e -> {
             canvas.setLineListener();
             canvas.setSelectedTool("Line");
         });
-        JButton polyLineBtn = new JButton("PolyLine");
+        JButton polyLineBtn = new JButton(new ImageIcon("img/polyline.png"));
         this.add(polyLineBtn);
         polyLineBtn.addActionListener(e -> {
             canvas.setPolyLineListener();
             canvas.setSelectedTool("PolyLine");
         });
-        JButton closedPolyLineBtn = new JButton("ClosedPolyLine");
+        JButton closedPolyLineBtn = new JButton(new ImageIcon("img/polygon.png"));
         this.add(closedPolyLineBtn);
         closedPolyLineBtn.addActionListener(e -> {
             canvas.setClosedPolyLineListener();
             canvas.setSelectedTool("Closed PolyLine");
         });
-        JButton rectangleBtn = new JButton("Rectangle");
+        JButton rectangleBtn = new JButton(new ImageIcon("img/rect.png"));
         this.add(rectangleBtn);
         rectangleBtn.addActionListener(e -> {
             canvas.setRectangleListener();
