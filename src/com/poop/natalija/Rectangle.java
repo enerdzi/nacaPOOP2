@@ -43,6 +43,11 @@ public class Rectangle extends PictureItem{
         end = new Point(end.x + x, end.y + y);
     }
 
+    @Override
+    public String getDimensions() {
+        return "(" + String.valueOf(width) + "," + String.valueOf(height) + ")";
+    }
+
     public Point getStart() {
         return start;
     }

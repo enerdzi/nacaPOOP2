@@ -3,8 +3,12 @@ package com.poop.natalija;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
 public class MyCanvas extends JPanel{
+    private MyWindow app;
+
     public static boolean drawBoundingBox = true;
 
     public static final Color defaultColor = Color.darkGray;
@@ -19,6 +23,10 @@ public class MyCanvas extends JPanel{
     private PictureItem drawingItem;
     private PictureItem selectedItem;
 
+    private String selectedTool;
+    private Point pointer;
+    private String dimensions;
+
     private SelectListener selectListener;
     private DeleteListener deleteListener;
 
@@ -27,7 +35,8 @@ public class MyCanvas extends JPanel{
     private ClosedPolyLineListener closedPolyLineListener;
     private RectangleListener rectangleListener;
 
-    public MyCanvas() {
+    public MyCanvas(MyWindow app) {
+        this.app = app;
         picture = new Picture();
         color = new Color(44, 62, 80);
         thickness = 1;
@@ -43,6 +52,23 @@ public class MyCanvas extends JPanel{
         rectangleListener = new RectangleListener(this);
 
         this.setSelectListener();
+        selectedTool = "Select";
+        pointer = new Point(0,0);
+        dimensions = "";
+
+        this.addMouseMotionListener(new MouseMotionListener() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                pointer = e.getPoint();
+                app.getStatusBar().resetStatusBar();
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                pointer = e.getPoint();
+                app.getStatusBar().resetStatusBar();
+            }
+        });
     }
 
     @Override
@@ -68,6 +94,7 @@ public class MyCanvas extends JPanel{
 
     public void setColor(Color color) {
         this.color = color;
+        app.getStatusBar().resetStatusBar();
         if (selectedItem != null) {
             MyAction.newAction(new ColorChangeAction(this));
             selectedItem.setColor(this.color);
@@ -81,6 +108,7 @@ public class MyCanvas extends JPanel{
 
     public void setThickness(int thickness) {
         this.thickness = thickness;
+        app.getStatusBar().resetStatusBar();
         if (selectedItem != null) {
             MyAction.newAction(new ThicknessChangeAction(this));
             selectedItem.setThickness(this.thickness);
@@ -94,6 +122,8 @@ public class MyCanvas extends JPanel{
 
     public void setDrawingItem(PictureItem drawingItem) {
         this.drawingItem = drawingItem;
+        dimensions = (drawingItem == null) ? "" : drawingItem.getDimensions();
+        app.getStatusBar().resetStatusBar();
     }
 
     public PictureItem getSelectedItem() {
@@ -175,5 +205,27 @@ public class MyCanvas extends JPanel{
         if (this.getSelectedItem() != null) this.getSelectedItem().setSelected(false);
         this.setSelectedItem(null);
         this.repaint();
+    }
+
+    public String getSelectedTool() {
+        return selectedTool;
+    }
+
+    public void setSelectedTool(String selectedTool) {
+        this.selectedTool = selectedTool;
+        app.getStatusBar().resetStatusBar();
+    }
+
+    public Point getPointer() {
+        return pointer;
+    }
+
+    public String getDimensions() {
+        return dimensions;
+    }
+
+    public void setDimensions(String dimensions) {
+        this.dimensions = dimensions;
+        app.getStatusBar().resetStatusBar();
     }
 }

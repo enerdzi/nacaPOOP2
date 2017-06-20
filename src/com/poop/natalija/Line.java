@@ -42,6 +42,13 @@ public class Line extends PictureItem{
         end = new Point(end.x + x, end.y + y);
     }
 
+    @Override
+    public String getDimensions() {
+        int width = (int) Math.abs(start.getX() - end.getX());
+        int height = (int) Math.abs(start.getY() - end.getY());
+        return "(" + String.valueOf(width) + "," + String.valueOf(height) + ")";
+    }
+
     public Point getStart() {
         return start;
     }

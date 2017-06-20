@@ -30,6 +30,11 @@ public abstract class MyAction {
         redoStack.clear();
     }
 
+    public static void emptyStacks() {
+        undoStack.clear();
+        redoStack.clear();
+    }
+
     private MyCanvas canvas;
 
     public MyAction(MyCanvas canvas) {
@@ -49,5 +54,9 @@ public abstract class MyAction {
 
     private void apply() {
         canvas.repaint();
+    }
+
+    public boolean isDirty() {
+        return !undoStack.isEmpty();
     }
 }

@@ -37,6 +37,7 @@ public abstract class PictureItem {
     public abstract void drawSelectedItem(Graphics2D g);
     protected abstract void makeBoundingBox();
     protected abstract void moveItem(int x, int y);
+    public abstract String getDimensions();
 
     private void moveBoundingBox(int x, int y) {
         Point topLeft = boundingBox.getTopLeft();

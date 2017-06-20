@@ -23,8 +23,8 @@ public class PolyLineListener implements MouseListener, MouseMotionListener{
             if (!drawing) {
                 line = new PolyLine(MyCanvas.defaultColor, MyCanvas.defaultThickness, point);
                 drawing = true;
-                canvas.setDrawingItem(line);
                 line.addPoint(point);
+                canvas.setDrawingItem(line);
             } else {
                 line.setLastPoint(point);
                 line.addPoint(point);
@@ -62,6 +62,7 @@ public class PolyLineListener implements MouseListener, MouseMotionListener{
         if (drawing) {
             Point point = new Point(e.getX(), e.getY());
             line.setLastPoint(point);
+            canvas.setDrawingItem(line);
             canvas.repaint();
         }
     }

@@ -11,22 +11,22 @@ public class MyToolBar extends JToolBar{
     private static final int colorButtonSize = 15;
     private static final List<String> thicknessList = Arrays.asList("1", "2", "4", "8");
     private static final List<Color> colorList = Arrays.asList(
-            new Color(44, 62, 80),
-            new Color(142, 68, 173),
-            new Color(41, 128, 185),
-            new Color(39, 174, 96),
-            new Color(26, 188, 156),
-            new Color(241, 196, 15),
-            new Color(230, 126, 34),
-            new Color(231, 76, 60),
-            new Color(52, 73, 94),
-            new Color(155, 89, 182),
-            new Color(52, 152, 219),
-            new Color(46, 204, 113),
-            new Color(22, 160, 133),
-            new Color(243, 156, 18),
-            new Color(211, 84, 0),
-            new Color(192, 57, 43)
+            new Color(0, 0, 0),
+            new Color(157, 157, 157),
+            new Color(255, 255, 255),
+            new Color(190, 38, 51),
+            new Color(224, 111, 139),
+            new Color(73, 60, 43),
+            new Color(164, 100, 34),
+            new Color(235, 137, 49),
+            new Color(247, 226, 107),
+            new Color(47, 72, 78),
+            new Color(68, 137, 26),
+            new Color(163, 206, 39),
+            new Color(27, 38, 50),
+            new Color(0, 87, 132),
+            new Color(49, 162, 242),
+            new Color(178, 220, 239)
     );
 
     public MyToolBar(MyCanvas canvas) {
@@ -41,16 +41,18 @@ public class MyToolBar extends JToolBar{
         this.add(selectBtn);
         selectBtn.addActionListener(e -> {
             canvas.setSelectListener();
+            canvas.setSelectedTool("Select");
         });
         JButton deleteBtn = new JButton("Delete");
         this.add(deleteBtn);
         deleteBtn.addActionListener(e -> {
             canvas.setDeleteListener();
+            canvas.setSelectedTool("Delete");
         });
         JCheckBox showBoxCheck = new JCheckBox("Show box", true);
         this.add(showBoxCheck);
         showBoxCheck.addItemListener(e -> {
-           MyCanvas.drawBoundingBox = (e.getStateChange()==1 ? true : false);
+           MyCanvas.drawBoundingBox = (e.getStateChange() == 1);
            canvas.repaint();
         });
         this.addSeparator();
@@ -58,21 +60,25 @@ public class MyToolBar extends JToolBar{
         this.add(lineBtn);
         lineBtn.addActionListener(e -> {
             canvas.setLineListener();
+            canvas.setSelectedTool("Line");
         });
         JButton polyLineBtn = new JButton("PolyLine");
         this.add(polyLineBtn);
         polyLineBtn.addActionListener(e -> {
             canvas.setPolyLineListener();
+            canvas.setSelectedTool("PolyLine");
         });
         JButton closedPolyLineBtn = new JButton("ClosedPolyLine");
         this.add(closedPolyLineBtn);
         closedPolyLineBtn.addActionListener(e -> {
             canvas.setClosedPolyLineListener();
+            canvas.setSelectedTool("Closed PolyLine");
         });
         JButton rectangleBtn = new JButton("Rectangle");
         this.add(rectangleBtn);
         rectangleBtn.addActionListener(e -> {
             canvas.setRectangleListener();
+            canvas.setSelectedTool("Rectangle");
         });
         this.addSeparator();
         JPanel activeColor = new JPanel();

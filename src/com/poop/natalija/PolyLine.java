@@ -59,6 +59,15 @@ public class PolyLine extends PictureItem{
         });
     }
 
+    @Override
+    public String getDimensions() {
+        Point start = points.get(points.size() - 1);
+        Point end = points.get(points.size() - 2);
+        int width = (int) Math.abs(start.getX() - end.getX());
+        int height = (int) Math.abs(start.getY() - end.getY());
+        return "(" + String.valueOf(width) + "," + String.valueOf(height) + ")";
+    }
+
     public List<Point> getPoints() {
         return points;
     }
