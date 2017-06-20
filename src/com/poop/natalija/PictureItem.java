@@ -76,4 +76,9 @@ public abstract class PictureItem {
     public boolean isClicked(Point p) {
         return boundingBox.isInBoundingBox(p);
     }
+
+    @Override
+    public String toString() {
+        return color.getRed() + "," + color.getGreen() + "," + color.getBlue() + "," + thickness;
+    }
 }

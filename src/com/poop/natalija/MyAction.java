@@ -56,7 +56,7 @@ public abstract class MyAction {
         canvas.repaint();
     }
 
-    public boolean isDirty() {
+    public static boolean isDirty() {
         return !undoStack.isEmpty();
     }
 }

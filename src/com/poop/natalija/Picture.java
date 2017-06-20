@@ -41,4 +41,13 @@ public class Picture {
     public void insertItem(PictureItem item, int index) {
         items.add(index, item);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder ret = new StringBuilder();
+        for (PictureItem pictureItem : items) {
+            ret.append(pictureItem.toString());
+        }
+        return ret.toString();
+    }
 }

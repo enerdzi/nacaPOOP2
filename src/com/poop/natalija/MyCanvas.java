@@ -38,7 +38,7 @@ public class MyCanvas extends JPanel{
     public MyCanvas(MyWindow app) {
         this.app = app;
         picture = new Picture();
-        color = new Color(44, 62, 80);
+        color = new Color(0, 0, 0);
         thickness = 1;
 
         drawingItem = selectedItem = null;

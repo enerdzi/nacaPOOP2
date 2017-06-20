@@ -91,4 +91,13 @@ public class PolyLine extends PictureItem{
             makeBoundingBox();
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder ret = new StringBuilder("poly," + super.toString() + "," + points.size());
+        for (Point point : points) {
+            ret.append(",").append(point.x).append(",").append(point.y);
+        }
+        return ret + "\n";
+    }
 }

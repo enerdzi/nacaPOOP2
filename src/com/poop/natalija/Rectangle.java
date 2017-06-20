@@ -69,4 +69,12 @@ public class Rectangle extends PictureItem{
         width = (int) Math.abs(start.getX() - end.getX());
         height = (int) Math.abs(start.getY() - end.getY());
     }
+
+    @Override
+    public String toString() {
+        String ret = "rect,";
+        ret += super.toString();
+        ret +="," + start.x + "," + start.y + "," + end.x + "," + end.y + "\n";
+        return ret;
+    }
 }

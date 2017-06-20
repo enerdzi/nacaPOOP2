@@ -91,4 +91,13 @@ public class ClosedPolyLine extends PictureItem{
             makeBoundingBox();
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder ret = new StringBuilder("cpoly," + super.toString() + "," + points.size());
+        for (Point point : points) {
+            ret.append(",").append(point.x).append(",").append(point.y);
+        }
+        return ret + "\n";
+    }
 }

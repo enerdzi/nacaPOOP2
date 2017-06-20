@@ -3,6 +3,9 @@ package com.poop.natalija;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,7 +35,6 @@ public class MyToolBar extends JToolBar{
     public MyToolBar(MyCanvas canvas) {
         this.canvas = canvas;
         createToolBar();
-
         setFloatable(false);
     }
 

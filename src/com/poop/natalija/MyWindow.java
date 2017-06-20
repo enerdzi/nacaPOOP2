@@ -15,8 +15,8 @@ public class MyWindow extends JFrame{
 
         ImageIcon icon = new ImageIcon("img/poop.png");
 
-        setJMenuBar(new MyMenuBar());
         MyCanvas canvas = new MyCanvas(this);
+        setJMenuBar(new MyMenuBar(canvas));
         statusBar = new MyStatusBar(canvas);
         add(new MyToolBar(canvas), BorderLayout.NORTH);
         add(canvas, BorderLayout.CENTER);

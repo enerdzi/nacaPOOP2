@@ -64,4 +64,12 @@ public class Line extends PictureItem{
     public void setEnd(Point end) {
         this.end = end;
     }
+
+    @Override
+    public String toString() {
+        String ret = "line,";
+        ret += super.toString();
+        ret +="," + start.x + "," + start.y + "," + end.x + "," + end.y + "\n";
+        return ret;
+    }
 }
