@@ -20,7 +20,7 @@ public class LineListener implements MouseListener, MouseMotionListener{
     @Override
     public void mousePressed(MouseEvent e) {
         Point point = new Point(e.getX(), e.getY());
-        line = new Line(point, point, MyCanvas.defaultColor, MyCanvas.defaultThickness);
+        line = new Line(MyCanvas.defaultColor, MyCanvas.defaultThickness, point, point);
         canvas.setDrawingItem(line);
         canvas.repaint();
     }
@@ -28,7 +28,7 @@ public class LineListener implements MouseListener, MouseMotionListener{
     @Override
     public void mouseReleased(MouseEvent e) {
         Point point = new Point(e.getX(), e.getY());
-        line = new Line(line.getStart(), point, canvas.getColor(), canvas.getThickness());
+        line = new Line(canvas.getColor(), canvas.getThickness(), line.getStart(), point);
         canvas.setDrawingItem(null);
         canvas.getPicture().addItem(line);
         MyAction.newAction(new NewItemAction(canvas, line));
@@ -44,7 +44,7 @@ public class LineListener implements MouseListener, MouseMotionListener{
     @Override
     public void mouseDragged(MouseEvent e) {
         Point point = new Point(e.getX(), e.getY());
-        line = new Line(line.getStart(), point, MyCanvas.defaultColor, MyCanvas.defaultThickness);
+        line = new Line(MyCanvas.defaultColor, MyCanvas.defaultThickness, line.getStart(), point);
         canvas.setDrawingItem(line);
         canvas.repaint();
     }

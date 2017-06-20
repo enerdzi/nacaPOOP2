@@ -59,6 +59,11 @@ public class MyToolBar extends JToolBar{
         lineBtn.addActionListener(e -> {
             canvas.setLineListener();
         });
+        JButton polyLineBtn = new JButton("PolyLine");
+        this.add(polyLineBtn);
+        polyLineBtn.addActionListener(e -> {
+            canvas.setPolyLineListener();
+        });
         this.addSeparator();
         JPanel activeColor = new JPanel();
         activeColor.setBackground(canvas.getColor());

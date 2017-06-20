@@ -21,7 +21,7 @@ public class MyWindow extends JFrame{
 
         setIconImage(icon.getImage());
         setTitle("PooPaint");
-        setSize(700,500);
+        setSize(900,600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }

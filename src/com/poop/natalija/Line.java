@@ -6,12 +6,10 @@ import java.awt.*;
 public class Line extends PictureItem{
     private Point start, end;
 
-    public Line(Point start, Point end, Color color, int thickness) {
-        setColor(color);
-        setThickness(thickness);
+    public Line(Color color, int thickness, Point start, Point end) {
+        super(color, thickness);
         this.start = start;
         this.end = end;
-        setSelected(false);
         makeBoundingBox();
     }
 
@@ -25,7 +23,7 @@ public class Line extends PictureItem{
     @Override
     public void drawSelectedItem(Graphics2D g) {
         g.setColor(getColor());
-        g.setStroke(new BasicStroke(getThickness() + 2));
+        g.setStroke(new BasicStroke(getThickness() + MyCanvas.selectedThicker));
         g.drawLine(start.x, start.y, end.x, end.y);
     }
 

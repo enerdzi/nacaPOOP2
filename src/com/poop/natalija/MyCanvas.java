@@ -10,6 +10,8 @@ public class MyCanvas extends JPanel{
     public static final Color defaultColor = Color.darkGray;
     public static final int defaultThickness = 2;
 
+    public static final int selectedThicker = 2;
+
     private Picture picture;
     private Color color;
     private int thickness;
@@ -17,9 +19,11 @@ public class MyCanvas extends JPanel{
     private PictureItem drawingItem;
     private PictureItem selectedItem;
 
-    private LineListener lineListener;
     private SelectListener selectListener;
     private DeleteListener deleteListener;
+
+    private LineListener lineListener;
+    private PolyLineListener polyLineListener;
 
     public MyCanvas() {
         picture = new Picture();
@@ -28,9 +32,11 @@ public class MyCanvas extends JPanel{
 
         drawingItem = selectedItem = null;
 
-        lineListener = new LineListener(this);
         selectListener = new SelectListener(this);
         deleteListener = new DeleteListener(this);
+
+        lineListener = new LineListener(this);
+        polyLineListener = new PolyLineListener(this);
 
         this.setSelectListener();
     }
@@ -95,11 +101,13 @@ public class MyCanvas extends JPanel{
     }
 
     private void removeListeners() {
-        this.removeMouseListener(lineListener);
-        this.removeMouseMotionListener(lineListener);
         this.removeMouseListener(selectListener);
         this.removeMouseMotionListener(selectListener);
         this.removeMouseListener(deleteListener);
+        this.removeMouseListener(lineListener);
+        this.removeMouseMotionListener(lineListener);
+        this.removeMouseListener(polyLineListener);
+        this.removeMouseMotionListener(polyLineListener);
     }
 
     public void setLineListener() {
@@ -108,6 +116,14 @@ public class MyCanvas extends JPanel{
         this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         this.addMouseListener(lineListener);
         this.addMouseMotionListener(lineListener);
+    }
+
+    public void setPolyLineListener() {
+        removeListeners();
+        unSelect();
+        this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        this.addMouseListener(polyLineListener);
+        this.addMouseMotionListener(polyLineListener);
     }
 
     public void setSelectListener() {

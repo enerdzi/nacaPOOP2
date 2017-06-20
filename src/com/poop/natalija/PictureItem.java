@@ -9,6 +9,12 @@ public abstract class PictureItem {
     private MyBoundingBox boundingBox;
     private boolean isSelected;
 
+    public PictureItem(Color color, int thickness){
+        this.color = color;
+        this.thickness = thickness;
+        isSelected = false;
+    }
+
     public void draw(Graphics2D g) {
         if (isSelected) drawSelected(g);
         else {
