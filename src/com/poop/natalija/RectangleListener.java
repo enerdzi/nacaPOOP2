@@ -6,11 +6,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-public class LineListener implements MouseListener, MouseMotionListener{
+public class RectangleListener implements MouseListener, MouseMotionListener{
     private MyCanvas canvas;
-    private Line line;
+    private Rectangle rectangle;
 
-    public LineListener(MyCanvas canvas) {
+    public RectangleListener(MyCanvas canvas) {
         this.canvas = canvas;
     }
 
@@ -20,18 +20,18 @@ public class LineListener implements MouseListener, MouseMotionListener{
     @Override
     public void mousePressed(MouseEvent e) {
         Point point = new Point(e.getX(), e.getY());
-        line = new Line(MyCanvas.defaultColor, MyCanvas.defaultThickness, point, point);
-        canvas.setDrawingItem(line);
+        rectangle = new Rectangle(MyCanvas.defaultColor, MyCanvas.defaultThickness, point, point);
+        canvas.setDrawingItem(rectangle);
         canvas.repaint();
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         Point point = new Point(e.getX(), e.getY());
-        line = new Line(canvas.getColor(), canvas.getThickness(), line.getStart(), point);
+        rectangle = new Rectangle(canvas.getColor(), canvas.getThickness(), rectangle.getStart(), point);
         canvas.setDrawingItem(null);
-        canvas.getPicture().addItem(line);
-        MyAction.newAction(new NewItemAction(canvas, line));
+        canvas.getPicture().addItem(rectangle);
+        MyAction.newAction(new NewItemAction(canvas, rectangle));
         canvas.repaint();
     }
 
@@ -44,8 +44,8 @@ public class LineListener implements MouseListener, MouseMotionListener{
     @Override
     public void mouseDragged(MouseEvent e) {
         Point point = new Point(e.getX(), e.getY());
-        line = new Line(MyCanvas.defaultColor, MyCanvas.defaultThickness, line.getStart(), point);
-        canvas.setDrawingItem(line);
+        rectangle = new Rectangle(MyCanvas.defaultColor, MyCanvas.defaultThickness, rectangle.getStart(), point);
+        canvas.setDrawingItem(rectangle);
         canvas.repaint();
     }
 

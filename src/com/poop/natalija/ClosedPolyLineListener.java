@@ -6,12 +6,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-public class PolyLineListener implements MouseListener, MouseMotionListener{
+public class ClosedPolyLineListener implements MouseListener, MouseMotionListener{
     private MyCanvas canvas;
-    private PolyLine line;
+    private ClosedPolyLine line;
     private boolean drawing;
 
-    public PolyLineListener(MyCanvas canvas) {
+    public ClosedPolyLineListener(MyCanvas canvas) {
         this.canvas = canvas;
         drawing = false;
     }
@@ -19,9 +19,9 @@ public class PolyLineListener implements MouseListener, MouseMotionListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         Point point = new Point(e.getX(), e.getY());
-        if(e.getClickCount() == 1) {
+        if (e.getClickCount() == 1) {
             if (!drawing) {
-                line = new PolyLine(MyCanvas.defaultColor, MyCanvas.defaultThickness, point);
+                line = new ClosedPolyLine(MyCanvas.defaultColor, MyCanvas.defaultThickness, point);
                 drawing = true;
                 canvas.setDrawingItem(line);
                 line.addPoint(point);

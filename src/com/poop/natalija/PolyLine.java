@@ -19,26 +19,20 @@ public class PolyLine extends PictureItem{
     public void drawItem(Graphics2D g) {
         g.setColor(getColor());
         g.setStroke(new BasicStroke(getThickness()));
-        points.forEach(point -> {
-            int index = points.indexOf(point);
-            if (index < points.size() - 1) {
-                Point next = points.get(index + 1);
-                g.drawLine(point.x, point.y, next.x, next.y);
-            }
-        });
+        for (int i = 0; i < points.size() - 1; i++) {
+            int next = (i + 1) % points.size();
+            g.drawLine(points.get(i).x, points.get(i).y, points.get(next).x, points.get(next).y);
+        }
     }
 
     @Override
     public void drawSelectedItem(Graphics2D g) {
         g.setColor(getColor());
         g.setStroke(new BasicStroke(getThickness() + MyCanvas.selectedThicker));
-        points.forEach(point -> {
-            int index = points.indexOf(point);
-            if (index < points.size() - 1) {
-                Point next = points.get(index + 1);
-                g.drawLine(point.x, point.y, next.x, next.y);
-            }
-        });
+        for (int i = 0; i < points.size() - 1; i++) {
+            int next = (i + 1) % points.size();
+            g.drawLine(points.get(i).x, points.get(i).y, points.get(next).x, points.get(next).y);
+        }
     }
 
     @Override

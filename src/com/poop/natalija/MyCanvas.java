@@ -24,6 +24,8 @@ public class MyCanvas extends JPanel{
 
     private LineListener lineListener;
     private PolyLineListener polyLineListener;
+    private ClosedPolyLineListener closedPolyLineListener;
+    private RectangleListener rectangleListener;
 
     public MyCanvas() {
         picture = new Picture();
@@ -37,6 +39,8 @@ public class MyCanvas extends JPanel{
 
         lineListener = new LineListener(this);
         polyLineListener = new PolyLineListener(this);
+        closedPolyLineListener = new ClosedPolyLineListener(this);
+        rectangleListener = new RectangleListener(this);
 
         this.setSelectListener();
     }
@@ -108,6 +112,10 @@ public class MyCanvas extends JPanel{
         this.removeMouseMotionListener(lineListener);
         this.removeMouseListener(polyLineListener);
         this.removeMouseMotionListener(polyLineListener);
+        this.removeMouseListener(closedPolyLineListener);
+        this.removeMouseMotionListener(closedPolyLineListener);
+        this.removeMouseListener(rectangleListener);
+        this.removeMouseMotionListener(rectangleListener);
     }
 
     public void setLineListener() {
@@ -124,6 +132,22 @@ public class MyCanvas extends JPanel{
         this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         this.addMouseListener(polyLineListener);
         this.addMouseMotionListener(polyLineListener);
+    }
+
+    public void setClosedPolyLineListener() {
+        removeListeners();
+        unSelect();
+        this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        this.addMouseListener(closedPolyLineListener);
+        this.addMouseMotionListener(closedPolyLineListener);
+    }
+
+    public void setRectangleListener() {
+        removeListeners();
+        unSelect();
+        this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        this.addMouseListener(rectangleListener);
+        this.addMouseMotionListener(rectangleListener);
     }
 
     public void setSelectListener() {
